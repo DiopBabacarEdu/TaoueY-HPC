@@ -1,6 +1,8 @@
 # HPC - Programmation parallèle sur MPI
 
 ## Tutoriel N°7
+### Usage de MPI_Cart_createMPI_Cart_shift
+Texte normal suivi d’un <span class="bg-info text-success">texte coloré en vert sur fond bleu</span> dans un paragraphe.
 
 Dans l'exemple en anneau du tutoriel 6, nous supposons que le processus "suivant" est celui dont le rang est supérieur à notre rang. 
 Autrement dit, le processus ```i``` envoie au processus ```i+1```. 
