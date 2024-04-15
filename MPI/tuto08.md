@@ -1,6 +1,7 @@
 # HPC - Programmation parallèle sur MPI
 
 ## Tutoriel N°8
+### Usage des routines MPI_Bcast et MPI_Reduce
 
 Ce tutoriel présente un programme simple pour calculer la valeur de pi : la méthode évalue l'intégrale de $\dfrac{4}{1+x^{2}}$  entre ```0``` et ```1```. 
 La méthode est simple: l'intégrale est approximée par la somme de ```n``` intervalles; l'approximation de l'intégrale dans chaque intervalle est égale à : $\dfrac{(\dfrac{1}{n}*4)}{1+x^{2}}$.   
