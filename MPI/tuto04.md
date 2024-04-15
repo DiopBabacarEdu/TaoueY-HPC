@@ -1,7 +1,9 @@
 # HPC - Programmation parallèle sur MPI
 
 ## Tutoriel N°4
+### Diffusion de messages, broadcasting
 
+### Objectifs
 * Découvrir la fonction ```MPI_Bcast```
 * Comprendre l’utilité des fonctions utilisées
 * Augmenter le nombre de processus et pouvoir en observer le comportement
