@@ -1,6 +1,10 @@
 # HPC - Programmation parallèle sur MPI
 
 ## Tutoriel N°3
+### À la découverte des bases de MPI
+
+
+### Objectifs
 Les objectifs de ce tutoriel sont déclinées comme suit :
 * Découvrir un programme de base utilisant la bibliothèque MPI
 * Comprendre les fonctions MPI de base pour la communication entre processus
