@@ -1,6 +1,7 @@
 # HPC - Programmation parallèle sur MPI
 
 ## Tutoriel N°6
+### Envoi et réception basiques de message sur MPI
 
 ### Objectifs
 * Découvrir les fonctions ```MPI_Send```, ```MPI-Recv```
