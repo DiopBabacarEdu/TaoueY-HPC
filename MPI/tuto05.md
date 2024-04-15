@@ -1,7 +1,9 @@
 # HPC - Programmation parallèle sur MPI
 
 ## Tutoriel N°5
+### Encapsulation de données, bufferisation et diffusion 
 
+Les objectifs de ce tutoriel sont déclinés comme suit :
 * Découvrir les fonctions ```MPI_Pack``` et ```MPI_Unpack```
 * Pouvoir encapsuler une donnée sur un buffer et le communiquer dans un réseau de processus
 * Augmenter le nombre de processus et pouvoir en observer le comportement de votre PC
