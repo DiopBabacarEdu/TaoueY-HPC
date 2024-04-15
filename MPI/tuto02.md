@@ -1,7 +1,7 @@
 # HPC - Programmation parallèle sur MPI
 
 ## Tutoriel N°2
-
+### MPI : notions de base et compilation simple
 ### Objectifs
 * Découvrir les bases de MPI
 * Comprendre les fonctions/routines de base MPI
