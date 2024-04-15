@@ -1,7 +1,8 @@
 # HPC - Programmation parallèle sur MPI
 
 ## Tutoriel N°2
-Les objectifs dz ce tutoriel sont déclinées comme suit :
+
+### Objectifs
 * Découvrir les bases de MPI
 * Comprendre les fonctions/routines de base MPI
 * Exploiter les différents blocs de processeurs de votre PC pour observer l’exécution de code
