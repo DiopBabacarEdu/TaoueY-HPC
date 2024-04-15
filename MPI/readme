@@ -1,13 +1,1 @@
-# Hello
-#HPC - Programmation parallèle sur MPI
-##Travaux pratiques 1 
-————————————
-Objectifs: 
-Découvrir les capacités multi-core 
-Comprendre les MPI 
-Exploiter les différents blocs de processeurs de votre PC pour accélérer l’exécution de code 
-Tester différents programmes de calcul intensifs et de pouvoir en observer le temps 
-——————————————————————————————————————————- 
-Ce test pourrait aussi être simulé sur PC en tant que super-calculateur à un seul noeud en ordonnant aux différents cœurs de votre processeur d'effectuer vos opérations de calcul.
-Vous allez ensuite convertir la logique de ce code en version MPI, l'exécuter sur un cœur du processeur, puis mettre progressivement en ligne les cœurs restants. 
-Ainsi, vous apprendrez à écrire et à exécuter un simple code C pour calculer π. Ce code effectuera une intégration numérique (avec 300 000 itérations) sur une représentation de la fonction x de π. Voici le code :
+# Title
