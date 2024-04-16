@@ -23,4 +23,4 @@ Data contains several parameters mapped into a grid with several layers.
 - Connect to www.peps.cnes.fr 
 - Make a research based on location
 - Download the relevant products 
-- Apply this python code to extract data and plot
+- Apply these python code to extract data and plot
