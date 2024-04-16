@@ -1,9 +1,9 @@
-# HPC - Soumission de tâches Matlab via Slurm
-## Didacticiel d'utilisation de Taouey sur matlab
+# HPC - Soumission de tâches MATLAB via SLURM
+## Didacticiel d'utilisation de Taouey sur MATLAB
 
-Afin de soumettre des travaux par lots MATLAB à Slurm, nous aurons besoin de deuux sources : 
+Afin de soumettre des tâches MATLAB à SLURM, nous aurons besoin de deux code sources : 
 * (1) un **script MATLAB** qui décrit la solution à votre problème et,
-* (2) un **script Slurm** qui spécifie les ressources nécessaires, définit l'environnement et les commandes à exécuter.
+* (2) un **script SLURM** qui spécifie les ressources nécessaires, définit l'environnement et les commandes à exécuter.
 
 ## Exécution d'une tâche séquentielle avec MATLAB
 La plupart du temps, l'exécution de MATLAB en mode single-thread peut répondre à vos besoins. 
@@ -20,8 +20,8 @@ Le script Slurm (job.slurm) ci-dessous peut être utilisé pour des travaux sér
 #SBATCH --job-name=matlab        # Donner un nom à votre job
 #SBATCH --nodes=1                # ID du noeud
 #SBATCH --ntasks=1               # Allouer le nombre total de tâches
-#SBATCH --cpus-per-task=1        # cpu-cores par tâche (supérieur à 1 si multi-threading)
-#SBATCH --mem-per-cpu=4G         # mémoire allouée par cpu-core 
+#SBATCH --cpus-per-task=1        # Cpu-cores par tâche (supérieur à 1 si multi-threading)
+#SBATCH --mem-per-cpu=4G         # Mémoire allouée par cpu-core 
 #SBATCH --time=00:01:00          # Limite de temps d'exéctution (HH:MM:SS)
 #SBATCH --mail-type=all          # Notifications en cas de démarrage, d'arrêt et d'erreur
 
@@ -35,7 +35,7 @@ matlab -singleCompThread -nodisplay -nosplash -r hello_world
 Afin de supprimer l'interface graphique et le multithrading, nous invoquons MATLAB avec les options suivantes :
 
 ```Matlab
--singleCompThread
+-singleCompThread   
 -nodisplay
 -nosplash
 ```
@@ -90,8 +90,8 @@ Voici le script SLURM ci-dessous pour démarrer cette tâche :
 #SBATCH --job-name=parfor        # Donner un nom à votre job
 #SBATCH --nodes=1                # ID du noeud
 #SBATCH --ntasks=1               # Allouer le nombre total de tâches
-#SBATCH --cpus-per-task=4        # cpu-cores par tâche (supérieur à 1 car multi-threading)
-#SBATCH --mem-per-cpu=4G         # mémoire allouée par cpu-core 
+#SBATCH --cpus-per-task=4        # Cpu-cores par tâche (supérieur à 1 car multi-threading)
+#SBATCH --mem-per-cpu=4G         # Mémoire allouée par cpu-core 
 #SBATCH --time=00:00:30          # Limite de temps d'exéctution (HH:MM:SS)
 #SBATCH --mail-type=all          # Notifications en cas de démarrage, d'arrêt et d'erreur
 
