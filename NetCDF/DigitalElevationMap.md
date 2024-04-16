@@ -6,7 +6,7 @@ Supposons que l'on ait besoin d'extraire des données depuis un satellite, et qu
 * D'abord se connecter sur www.peps.cnes.fr
 * Effectuer une recherche basée sur les données géographiques
 * Identifier et télécharger le données sources correspondantes
-* Appliquer le code Python afin d'extraire et de plotter les données
+* Appliquer le code Python afin d'extraire et de plotter le DEM
 
 ### Étapes de traitement et de traçage
 Afin d'extraire ces données, nous pouvons nous reférer à ce code ci-dessous :
