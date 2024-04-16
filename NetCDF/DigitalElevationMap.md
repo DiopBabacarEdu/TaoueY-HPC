@@ -1,9 +1,9 @@
-# HPC - Comment exploiter des données de satelite ? 
-### Processing data extracted from Sentinel 
+# HPC - Traitement de données DEM (Digital Elevation Map)
+## Processing data extracted from Sentinel 
 Supposons que l'on ait besoin d'extraire des données depuis un satellite, et que l'on veuille les recupérer et les traiter afin de les intégrer dans de futures plateformes.
 
-## Processing DEM : Digital Elevation Map
-* D'abord se connecter sur www.peps.cnes.fr
+### Exploration, extraction et traitement des données
+* D'abord se connecter sur [www.peps.cnes.fr](https://peps.cnes.fr/rocket/#/home)
 * Effectuer une recherche basée sur les données géographiques
 * Identifier et télécharger le données sources correspondantes
 * Appliquer le code Python afin d'extraire et de plotter le DEM
