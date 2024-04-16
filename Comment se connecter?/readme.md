@@ -22,11 +22,11 @@ On peut faire le transfert de fichiers sources depuis une machine hote en utlisa
 scp de sftp.
 
 ```
-scp cheminlocal/mon-code /nomUtilisateur@taouey.cineri.sn
+scp cheminlocal/mon-code nomUtilisateur@taouey.cineri.sn
 ```
  ou
  ```
-sftp cheminlocal/mon-code /nomUtilisateur@taouey.cineri.sn
+sftp cheminlocal/mon-code nomUtilisateur@taouey.cineri.sn
 ```
 Assurez-vous que le chemin d'accès existe sur le supercalculateur.
 
