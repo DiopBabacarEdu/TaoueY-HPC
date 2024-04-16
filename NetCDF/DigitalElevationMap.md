@@ -1,12 +1,16 @@
 # HPC - Traitement de données DEM (Digital Elevation Map)
-## Processing data extracted from Sentinel 
-Supposons que l'on ait besoin d'extraire des données depuis un satellite, et que l'on veuille les recupérer et les traiter afin de les intégrer dans de futures plateformes.
 
-### Exploration, extraction et traitement des données
+## Traitement des données extraites de Sentinel
+Supposons que l'on ait besoin d'extraire des données depuis un satellite, et que l'on veuille les recupérer et les traiter afin de les intégrer dans de futures plateformes. Le format NetCDF (network Common Data Form) est un format de fichier qui permet de stocker des données scientifiques multidimensionnelles (variables), telles que la température, l'humidité, la pression, la vitesse et la direction du vent.
+
+### Exploration, extraction et traitement des données de satellite
 * D'abord se connecter sur [www.peps.cnes.fr](https://peps.cnes.fr/rocket/#/home)
 * Effectuer une recherche basée sur les données géographiques
 * Identifier et télécharger le données sources correspondantes
 * Appliquer le code Python afin d'extraire et de plotter le DEM
+  
+![image](https://github.com/DiopBabacarEdu/TaoueY-HPC/assets/20286290/a34cfe6e-576f-489c-8dec-0051d8ae3c70)
+
 
 ### Étapes de traitement et de traçage
 Afin d'extraire ces données, nous pouvons nous reférer à ce code ci-dessous :
