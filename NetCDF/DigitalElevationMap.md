@@ -1,7 +1,6 @@
 # HPC - Comment exploiter des données de satelite ? 
 ### Processing data extracted from Sentinel 
-Supposons que l'on ait besoin d'extraire des données depuis un satellite, et que l'on veuille les recupérer et les traiter afin de les intégrer dans de futures platrformes.
-Ces données proviennent de Sentinel-3B.
+Supposons que l'on ait besoin d'extraire des données depuis un satellite, et que l'on veuille les recupérer et les traiter afin de les intégrer dans de futures plateformes.
 
 ## Processing DEM : Digital Elevation Map
 * D'abord se connecter sur www.peps.cnes.fr
