@@ -1,4 +1,4 @@
-# Processing Satellite Data using Python
+# Processing Satellite Data using NetCDF Python library
 ## Basics
 
 This git provides some scripts to preprocess satelite Copernicus 
