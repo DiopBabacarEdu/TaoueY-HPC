@@ -1,57 +1,182 @@
-# HPC - Programmation parallèle sur MPI
+# HPC - Didacticiel d'utilisation de MPI sur Taouey
 
-## Tutoriel N°1
+## Soumission de tâches MPI via SLURM
 
-* Ce test pourrait aussi être émulé sur un PC en tant que super-calculateur à un seul noeud, ordonnant par conséquent aux différents cœurs de votre processeur d'effectuer vos opérations de calcul.
+Afin de soumettre des tâches MPI à SLURM, nous aurons besoin de deux code sources : 
+* (1) un **script MPI** qui décrit la solution à votre problème et,
+* (2) un **script SLURM** qui spécifie les ressources nécessaires, définit l'environnement et les commandes à exécuter.
 
-* Vous allez ensuite convertir la logique de ce code en version MPI, l'exécuter sur un cœur du processeur, puis mettre progressivement en ligne les cœurs restants.
+## Exécution d'une tâche séquentielle avec MPI
+Pour certains cas, l'exécution de MPI en mode single-thread peut répondre à vos besoins. 
+Un job MPI séquentiel est une tâche qui peut nécessiter un ou plusieurs cœurs de CPU. 
+Voici un exemple de script MPI (hello_world.c) :
 
-* Ainsi, vous apprendrez à écrire et à exécuter un simple code ```C``` pour calculer ```π```. 
-Ce code effectuera une intégration numérique (avec ```300 000 itérations```) sur une représentation de la fonction ```x``` de ```π```. Voici le code :
+```C
+#include <mpi.h>
+#include <stdio.h>
 
-Ci-dessous l'implémentation des fonctions de base sur les listes chaînées.
+int main(int argc, char** argv) {
+    // Initialiser MPI
+    MPI_Init(&argc, &argv);
 
-### Bout de code :
-```c
-#include <math.h> // math library
-#include <stdio.h>// Standard Input/Output library
-int main(void) {
-  long num_rects = 300000; long i;
-  double x,height,width,area; double sum;
-  width = 1.0/(double)num_rects; sum = 0;
-  for(i = 0; i < num_rects; i++) {
-    x = (i+0.5) * width;
-    height = 4/(1.0 + x*x);
-  sum += height; }
-  area = width * sum; //1000000000;
-  // taille d'un segment
-  // x: distance au centre du ième segment
-  // Somme des segments individuels
-  // Approximation de la valeur de Pi avec l'équation finale
-  printf("n");
-  printf(" Calculated Pi = %.16fn", area);
-  printf(" M_PI = %.16fn", M_PI);
-  printf("Relative error = %.16fn", fabs(area - M_PI)); return 0;
+    // Obtenir le nombre total de processus
+    int world_size;
+    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+
+    // Obtenir le rang de ce processus
+    int world_rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
+
+    // Afficher "Hello, world!" sur chaque processus
+    printf("Hello, world! from process %d of %d\n", world_rank, world_size);
+
+    // Finaliser MPI
+    MPI_Finalize();
+    return 0;
 }
 ```
+Le script Slurm ci-dessous peut être utilisé pour des travaux série :
 
-Le code a été écrit à l'aide de l'éditeur vim dans l'environnement terminal Linux comme suit: 
-* Commencez par changer le répertoire dans le dossier Desktop en entrant la commande ```cd Desktop```
-* Créez maintenant un fichier nommé ```Pi.c``` en entrant la commande ```vim Pi.c```
-* Appuyez sur ```i``` pour lancer la modification.
-* Tapez ou copiez le code comme indiqué précédemment.
-* Enregistrez le fichier en entrant ```Esc:wq```, qui vous ramène à l’invite de commande ($)
+```C
+#!/bin/bash
+#SBATCH --job-name=hello        # Donner un nom à votre job
+#SBATCH --nodes=1                # ID du noeud
+#SBATCH --ntasks=1               # Allouer le nombre total de tâches
+#SBATCH --cpus-per-task=1        # Cpu-cores par tâche (supérieur à 1 si multi-threading)
+#SBATCH --mem-per-cpu=4G         # Mémoire allouée par cpu-core 
+#SBATCH --time=00:01:00          # Limite de temps d'exéctution (HH:MM:SS)
+#SBATCH --mail-type=all          # Notifications en cas de démarrage, d'arrêt et d'erreur
+
+module purge
+module load mpi/openmpi/3.1.6/gcc-4.8.5
+
+mpicc hello.c -o hello
+mpirun -np 4 ./hello_world
+```
+
+Pour exécuter le script MPI, soumettez simplement le travail à SLURM avec la commande suivante :
+```C
+$ sbatch ./job.sh
+```
+## Suivi d'un job MPI 
+Une fois la tâche soumise, il est nécessaire de pouvoir suivre l'évolution de celle-ci au fur et à mesure qu'elle s'éxécute sur Taouey.
+Voici la commande pour afficher le statut d'une tâche :
+```C
+squeue -u $USER
+```
+## Gérer les versions aux travers des modules
+Nous avons supposé utilisée la version 3.1.6 de MPI. Cependant, au cas où il serait nécessaire de se calquer sur d'autres versions, 
+taper la commande qui permet de lister les autres versions disponibles.
+
+```
+$ module avail mpi
+------------ /software/modulefiles ----------------------------
+mpi/openmpi/2.0.4/icc-2018.5.274    mpi/openmpi/3.1.0/gcc-7.2.0
+mpi/openmpi/3.1.0/icc-2018.5.274    mpi/openmpi/3.1.6/gcc-4.8.5
+------------ /etc/modulefiles ---------------------------------
+mpi/mvapich23-x86_64         
+```
+Ensuite, charger le module correspondant en tapant la commande suivante
+```
+module load mpi/openmpi/3.1.0/gcc-7.2.0
+```
 
 
-### Compilation et exécution
-* Compiler le code à l'aide de la commande :  
-``` mpicc Pi.c -o Pi ```  
-Cette procédure génère un nom de fichier exécutable Pi situé dans le dossier Desktop.
-Enfin, exécutez le code à l'aide de la commande  
-``` time mpiexec Pi ```  
-ou  
-``` time mpiexec ./Pi ```  
+## Parallélisation d'un job MPI 
 
-* N'hésitez pas à modifier le code en modifiant la valeur de *** num_rects *** (actuellement égale à 300 000) et
-observez la valeur modifiée du calcul de Pi. Le temps de calcul du code devrait changer en conséquence. Notez que ce calcul a été exécuté sur un seul coeur du processeur.
- 
+Afin de paralléliser un job MPI, il est judicieux de procéder à une subdivision de la tâche globale en plusieurs sous-tâches,
+lesquelles peuvent être exécutées en parallèle sur plusieurs processeurs. 
+
+### Quelques conseils à la parallélisation :
+
+Nous posons ici le problème du **calcul la somme des éléments d'un tableau**. Voici quelques étapes qui pourrait aider à paralléliser ce problème sur MPI :
+
+* **Diviser les données** : Divisez le tableau en parties égales (ou aussi équitablement que possible) pour que chaque processus MPI puisse effectuer des calculs sur une partie des données.
+* **Distribuer les données** : Utilisez des communications MPI pour distribuer les parties du tableau à chaque processus MPI. Vous pouvez utiliser des fonctions MPI comme MPI_Scatter ou MPI_Send/MPI_Recv pour cela.
+* **Calculer localement** : Chaque processus MPI calcule localement la somme des éléments de sa partie du tableau.
+* **Collecter les résultats** : Utilisez des communications MPI pour collecter les résultats partiels de chaque processus MPI et les agréger en une somme globale. Vous pouvez utiliser des fonctions MPI comme MPI_Reduce ou MPI_Send/MPI_Recv pour cela.
+
+Voici une implémentation de cet exemple :
+```
+#include <stdio.h>
+#include <mpi.h>
+
+#define ARRAY_SIZE 10000
+
+int main(int argc, char** argv) {
+    int rank, size;
+    int local_sum = 0;
+    int global_sum = 0;
+
+    MPI_Init(&argc, &argv);
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &size);
+
+    // Diviser les données (tableau) équitablement
+    int chunk_size = ARRAY_SIZE / size;
+    int start_index = rank * chunk_size;
+    int end_index = start_index + chunk_size;
+
+    // Calculer localement la somme des éléments du tableau
+    for (int i = start_index; i < end_index; ++i) {
+        local_sum += i; // Exemple: calcul de la somme des indices
+    }
+
+    // Collecter les résultats partiels de chaque processus
+    MPI_Reduce(&local_sum, &global_sum, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+
+    // Afficher le résultat global sur le processus 0
+    if (rank == 0) {
+        printf("La somme globale est : %d\n", global_sum);
+    }
+
+    MPI_Finalize();
+    return 0;
+}
+```
+Voici le script SLURM ci-dessous pour soumettre cette tâche :
+```C
+#!/bin/bash
+#SBATCH --job-name=mpi_job       # Donner un nom à votre job
+#SBATCH --nodes=1                # ID du noeud
+#SBATCH --ntasks=1               # Allouer le nombre total de tâches
+#SBATCH --cpus-per-task=4        # Cpu-cores par tâche (supérieur à 1 car multi-threading)
+#SBATCH --mem-per-cpu=4G         # Mémoire allouée par cpu-core 
+#SBATCH --time=00:00:30          # Limite de temps d'exéctution (HH:MM:SS)
+#SBATCH --mail-type=all          # Notifications en cas de démarrage, d'arrêt et d'erreur
+
+module purge
+module load mpi/openmpi/3.1.6/gcc-4.8.5
+
+mpicc parallele_mpi.c -o parallele_mpi
+mpirun -np 10 ./parallele_mpi
+```
+
+Pour obtenir le nom du nœud de calcul où s'exécute votre travail, utilisez la commande suivante :
+
+```
+$ squeue -u $USER
+```
+La colonne la plus à droite intitulée ```"NODELIST(REASON)"``` donne le nom du nœud où s'exécute votre travail. Connectez-vous via SSH à ce nœud, par exemple :
+
+```
+$ ssh pm1-nod010
+```
+Une fois sur le nœud de calcul, exécutez ```htop -u $USER```. 
+Si votre travail s'exécute en parallèle, vous devriez voir un processus utilisant bien plus de 100 % dans la colonne %CPU. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
