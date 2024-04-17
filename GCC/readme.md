@@ -2,14 +2,14 @@
 Le compilateur GCC (GNU Compiler Collection) peut générer du code parallèle en utilisant notamment OpenMP. 
 Cependant, il est à noter que le parallélisme généré par GCC dépend en grande partie des options activées et des directives de compilation spécifiées.
 
-## Soumission de tâches OpenMP via SLURM
+## Soumission de tâches GCC/OpenMP via SLURM
 
 Afin de soumettre des tâches OpenMP à SLURM, nous aurons besoin de deux code sources : 
 * (1) un **code source** (écrit en C dans cet exemple) qui décrit la solution à votre problème et,
 * (2) un **script SLURM** qui spécifie les ressources nécessaires, définit l'environnement et les commandes à exécuter.
 Dans cet exemple, nous utilisons gcc-13.1.0** de GCC et openMP.
 
-## Exécution d'une tâche avec OpenMP
+## Exécution d'une tâche
 Un job GCC-OpenMP est une tâche qui peut nécessiter un ou plusieurs cœurs de CPU. Voici un exemple de script GCC-OpenMP (hello_world.c) :
 
 ```C
