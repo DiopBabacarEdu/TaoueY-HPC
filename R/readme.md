@@ -1,6 +1,6 @@
-# HPC - Comment soumettre un job R avec SLURM
+# HPC - Didacticiel d'utilisation de R sur Taouey 
 
-## Didacticiel d'utilisation de R sur Taouey 
+## Comment soumettre un job R avec SLURM
 Afin de soumettre des tâches R à SLURM, nous aurons besoin principalement de deux code sources :
 
 * (1) un script R qui décrit la solution à votre problème et,
