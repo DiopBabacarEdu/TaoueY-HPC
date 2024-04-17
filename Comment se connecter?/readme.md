@@ -17,16 +17,16 @@ Une fois les paramètres de connexion validés, vous obtenez normalement ce qui 
 
 
 ## Transfert de fichiers
-Une fois entré le mot de passe transfert de fichier si besoin.
-On peut faire le transfert de fichiers sources depuis une machine hote en utlisant la commande :
-scp de sftp.
+Une fois entré le mot de passe, il peut être nécessaire d'effectuer un transfert de fichier depuis votre hote local.
+On peut faire le transfert de fichiers sources depuis une machine hote vers une machine source en utlisant les commandes :
+scp et sftp.
 
 ```
-scp cheminlocal/mon-code nomUtilisateur@taouey.cineri.sn
+scp cheminlocal/mon-code /home/nomUtilisateur
 ```
  ou
  ```
-sftp cheminlocal/mon-code nomUtilisateur@taouey.cineri.sn
+sftp cheminlocal/mon-code /home/nomUtilisateur
 ```
-Assurez-vous que le chemin d'accès existe sur le supercalculateur.
+Assurez-vous que le chemin d'accès existe sur votre ordinateur et sur le supercalculateur.
 
