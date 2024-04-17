@@ -81,7 +81,7 @@ module load gcc/12.1.0/gcc-12.1.0
 
 ## Parallélisation d'un job OpenMP 
 
-Afin de paralléliser un job MPI, il est judicieux de procéder à une subdivision de la tâche globale en plusieurs sous-tâches,
+Afin de paralléliser un job OpenMP, il est judicieux de procéder à une subdivision de la tâche globale en plusieurs sous-tâches,
 lesquelles peuvent être exécutées en parallèle sur plusieurs processeurs. 
 
 
