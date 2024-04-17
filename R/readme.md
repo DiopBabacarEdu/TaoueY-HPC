@@ -92,3 +92,6 @@ Rscript table_creation.R
 $ sbatch ./hello.sh
 
 ```
+# Suivi des job R sur SLURM
+Afin de suivre l'état d'avancement de votre job une fois soumis, se reférer au didacticiel sur SLURM.  
+cat("[Didacticiel sur SLURM](https://github.com/DiopBabacarEdu/TaoueY-HPC/tree/main/SLURM)")
