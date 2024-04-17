@@ -1,6 +1,6 @@
-# HPC - Comment soumettre un job fortran avec SLURM
+# HPC - Didacticiel d'utilisation de FORTRAN sur Taouey  
 
-## Didacticiel d'utilisation de FORTRAN sur Taouey 
+## Comment soumettre un job fortran avec SLURM
 Afin de soumettre des tâches FORTRAN à SLURM, nous aurons besoin de deux code sources :
 
 * (1) un script FORTRAN qui décrit la solution à votre problème et,
