@@ -1,6 +1,6 @@
-# HPC - Soumission de tâches MATLAB via SLURM
+# HPC - Didacticiel d'utilisation de MATLAB sur Taouey
 
-## Didacticiel d'utilisation de Taouey sur MATLAB
+## Soumission de tâches MATLAB via SLURM
 
 Afin de soumettre des tâches MATLAB à SLURM, nous aurons besoin de deux code sources : 
 * (1) un **script MATLAB** qui décrit la solution à votre problème et,
