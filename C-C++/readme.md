@@ -67,7 +67,7 @@ squeue -u $USER
 Nous avons utilisé dans notre exemple la version 13.1.0 de gcc. Cependant, au cas où il serait nécessaire de se calquer sur d'autres versions, 
 taper la commande qui permet de lister les autres versions disponibles.
 
-```
+```C
 $ module avail mpi
 ------------ /software/modulefiles ----------------------------
 gcc/12.1.0/gcc-12.1.0       gcc/13.1.0/gcc-13.1.0
@@ -87,7 +87,7 @@ lesquelles peuvent être exécutées en parallèle sur plusieurs processeurs.
 
 
 Voici un exemple simple de code parallèle en C/OpenMP pour calculer la somme des éléments d'un tableau :
-```
+```C
 #include <stdio.h>
 #include <omp.h>
 
