@@ -1,16 +1,16 @@
-# HPC - Didacticiel d'utilisation de GCC/OpenMP sur Taouey
+# HPC - Didacticiel d'utilisation de C/OpenMP sur Taouey
 Le compilateur GCC (GNU Compiler Collection) peut générer du code parallèle en utilisant notamment OpenMP. 
 Cependant, il est à noter que le parallélisme généré par GCC dépend en grande partie des options activées et des directives de compilation spécifiées.
 
-## Soumission de tâches GCC/OpenMP via SLURM
+## Soumission de tâches C/OpenMP via SLURM
 
-Afin de soumettre des tâches OpenMP à SLURM, nous aurons besoin de deux code sources : 
+Afin de soumettre des tâches C/OpenMP à SLURM, nous aurons besoin de deux code sources : 
 * (1) un **code source** (écrit en C dans cet exemple) qui décrit la solution à votre problème et,
 * (2) un **script SLURM** qui spécifie les ressources nécessaires, définit l'environnement et les commandes à exécuter.
-Dans cet exemple, nous utilisons gcc-13.1.0** de GCC et openMP.
+Dans cet exemple, nous utilisons la version **gcc-13.1.0** de GCC.
 
 ## Exécution d'une tâche
-Un job GCC-OpenMP est une tâche qui peut nécessiter un ou plusieurs cœurs de CPU. Voici un exemple de script GCC-OpenMP (hello_world.c) :
+Un job C/OpenMP est une tâche qui peut nécessiter un ou plusieurs cœurs de CPU. Voici un exemple de script C/OpenMP (hello_world.c) :
 
 ```C
 #include <stdio.h>
@@ -30,7 +30,7 @@ int main() {
     return 0;
 }
 ```
-Le script Slurm ci-dessous peut être utilisé pour soumettre un job GCC-OpenMP :
+Le script Slurm ci-dessous peut être utilisé pour soumettre un job C/OpenMP :
 
 ```C
 #!/bin/bash
@@ -57,7 +57,7 @@ Pour exécuter ce script, soumettez simplement le travail à SLURM avec la comma
 ```C
 $ sbatch ./hello_world.sh
 ```
-## Suivi d'un job GCC-OpenMP 
+## Suivi d'un job C/OpenMP
 Une fois la tâche soumise, il est nécessaire de pouvoir suivre l'évolution de celle-ci au fur et à mesure qu'elle s'éxécute sur Taouey.
 Voici la commande pour afficher le statut d'une tâche :
 ```C
@@ -82,11 +82,11 @@ module load gcc/12.1.0/gcc-12.1.0
 
 ## Parallélisation d'un job  
 
-Afin de paralléliser un job GCC-OpenMP, il est judicieux de procéder à une subdivision de la tâche globale en plusieurs sous-tâches,
+Afin de paralléliser un job C/OpenMP, il est judicieux de procéder à une subdivision de la tâche globale en plusieurs sous-tâches,
 lesquelles peuvent être exécutées en parallèle sur plusieurs processeurs. 
 
 
-Voici un exemple simple de code parallèle en C utilisant OpenMP pour calculer la somme des éléments d'un tableau :
+Voici un exemple simple de code parallèle en C/OpenMP pour calculer la somme des éléments d'un tableau :
 ```
 #include <stdio.h>
 #include <omp.h>
