@@ -25,4 +25,4 @@ Pour plus d'informations, visiter notre site web officiel [www.cineri.sn](https:
 
 Vous pouvez également nous contacter via le mail support : [support@cineri.sn](support@cineri.sn).
 
-<img width="1375" alt="image" src="https://github.com/DiopBabacarEdu/TaoueY-HPC/assets/20286290/ef51e021-f54a-43b8-a454-3034e7c5a561">
+<img width="981" alt="image" src="https://github.com/DiopBabacarEdu/TaoueY-HPC/assets/20286290/b109ef72-75c9-4b06-93a9-3a9ddc597575">
