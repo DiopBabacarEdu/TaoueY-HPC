@@ -1,13 +1,16 @@
-OpenBLAS est une bibliothèque open source optimisée pour l'algèbre linéaire de base (BLAS) et les fonctions linéaires (LAPACK). 
-Elle fournit des implémentations rapides et efficaces des opérations de base de l'algèbre linéaire, telles que les multiplications de matrices, 
-les résolutions de systèmes linéaires et les décompositions de valeurs singulières.
+# HPC - Didacticiel d'utilisation d'OpenBLAS sur Taouey 
 
-OpenBLAS est souvent utilisée dans des applications scientifiques et de calcul numérique nécessitant des performances élevées, 
-telles que l'apprentissage automatique, la modélisation mathématique, la simulation, etc. Elle peut être intégrée dans de nombreux langages de programmation, 
-y compris C, C++, Fortran et Python, et est compatible avec une variété de systèmes d'exploitation.
+## Comment soumettre un job OpenBLAS 
+Afin de soumettre des tâches OpenBLAS à SLURM, nous aurons besoin principalement de deux code sources :
 
+* (1) un script OpenBLAS qui décrit la solution à votre problème et,
+* (2) un script SLURM qui spécifie les ressources nécessaires, définit l'environnement et les commandes à exécuter.
+Nous utilisons gcc dans cet exemple pour l'impémentation à OpenBLAS.
+
+#  Multiplication de matrices sur OpenBLAS
 Voici un exemple simple d'utilisation d'OpenBLAS en C pour effectuer une multiplication de matrices :
 
+``` C
 #include <stdio.h>
 #include <stdlib.h>
 #include <cblas.h>
@@ -38,12 +41,35 @@ int main() {
 
     return 0;
 }
-
+```
 Dans cet exemple :
 
 Nous définissons trois matrices A, B, et C de taille 3x3.
 Nous utilisons la fonction **cblas_dgemm** d'OpenBLAS pour effectuer la multiplication des matrices A et B, stockant le résultat dans la matrice C.
 Enfin, nous affichons le résultat de la multiplication de matrices.
 
-gcc -o example example.c -lopenblas
+# Soumission avec Slurm
+Maintenant, vous devez créer encore un autre script SLURM **job_matrices.sh** pour soumettre votre travail. Voici un exemple de script SLURM :
 
+``` C
+#!/bin/bash
+#SBATCH --job-name=job_matrices
+#SBATCH --output=job_matrices.out
+#SBATCH --error=job_matrices.err
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --time=1:00:00
+
+# Chargement du module OpenBLAS
+module purge
+module load OpenBLAS/0.3.26/gcc-13.1.0
+
+# Exécution du script OpenBLAS
+gcc -o matrices matrices.c -lopenblas
+```
+
+Pour exécuter le code OpenBLAS, soumettez simplement le travail à SLURM avec la commande suivante :
+``` C
+$ sbatch ./job_matrices.sh
+
+```
