@@ -20,4 +20,6 @@ Ci-dessous, vous trouverez une liste des didacticiels suivant votre environement
 *  [Soumettre un job R ?](https://github.com/DiopBabacarEdu/TaoueY-HPC/tree/main/R)
 *  [Utilitaires sur Slurm ?](https://github.com/DiopBabacarEdu/TaoueY-HPC/tree/main/SLURM)
 
-<img width="993" alt="image" src="https://github.com/DiopBabacarEdu/TaoueY-HPC/assets/20286290/57a035e4-a34b-4d96-8826-d5ef3f9b93ef" alt="cineri.sn" width="300" height="150">
+Pour plus d'informations, se reférer au site web officiel [www.cineri.sn](https://www.cineri.sn).
+
+Vous pouvez égalemenrt nous contacter via le mail support : [support@cineri.sn](support@cineri.sn).
