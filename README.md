@@ -8,7 +8,7 @@
 Vous trouverez les éléments ci-dessous :
 * [Comment se connecter sur Taouey ?](https://github.com/DiopBabacarEdu/TaoueY-HPC/tree/main/Comment%20se%20connecter%3F)
 
-Ci-dessous, vous trouverez une liste des didacticiels suivant votre environement de programmation :
+Ci-dessous, vous trouverez une liste des didacticiels suivant votre environnement de programmation :
 * [Soumettre un job C ?](https://github.com/DiopBabacarEdu/TaoueY-HPC/tree/main/C-C%2B%2B)
 * [Soumettre un job Cuda ?](https://github.com/DiopBabacarEdu/TaoueY-HPC/tree/main/Cuda)
 *  [Soumettre un job Fortran ?](https://github.com/DiopBabacarEdu/TaoueY-HPC/tree/main/Fortran)
