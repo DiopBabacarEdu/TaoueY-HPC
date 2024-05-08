@@ -41,7 +41,7 @@ Vous devrez également remplacer ./mon_programme_mpi par le chemin vers votre pr
 Enfin, assurez-vous d'avoir chargé le module MPI approprié si nécessaire .
 
 # Comment soumettre votre job via SLURM ?
-Pour soumettre une tâche à partir de SLURM, vous pouvez utiliser la commande ```sbatch``` suivie du nom de votre script Slurm. Assurez-vous que votre script Slurm contient toutes les directives nécessaires, telles que le nombre de cœurs CPU, la mémoire, le temps d'exécution, etc.
+Pour soumettre une tâche à partir de SLURM, vous pouvez utiliser la commande ```sbatch``` suivie du nom de votre script Slurm. 
 
 Voici un exemple de commande pour soumettre une tâche à SLURM :
 
@@ -59,9 +59,6 @@ sbatch -p partition --cpus-per-task=4 job.slurm
 ```
 
 Cela spécifierait la partition sur laquelle exécuter la tâche (-p partition) ainsi que le nombre de cœurs CPU à utiliser (--cpus-per-task=4).
-
-Assurez-vous de consulter la documentation de SLURM et les directives de votre système spécifique en cas de besoin de plus d'informations sur la soumission de tâches.
-
 
 # Comment suivre votre tâche lancée sur SLURM ?
 Une fois la tâche soumise, il est nécessaire de pouvoir suivre l'évolution de celle-ci au fur et à mesure que le job s'éxécute sur Taouey. Voici la commande pour afficher le statut d'une tâche :
